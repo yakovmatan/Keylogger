@@ -28,6 +28,7 @@ class WriteToFile:
     def write_to_file(self):
         with open(f"{self.timer_days()}.txt", "w" , encoding='utf-8') as file:
             file.write(f"   ***{self.timer_hours()}*** \n {self.data}\n")
+if __name__ == '__main__':
 
-f = WriteToFile("shuki")
-f.write_to_json_file()
+    f = WriteToFile("shuki")
+    f.write_to_json_file()
