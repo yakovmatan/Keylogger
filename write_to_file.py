@@ -1,10 +1,15 @@
 import time
 import json
 from time import localtime
+
 class WriteToFile:
-    def __init__(self,data):
+    def __init__(self, data="", dic=None):
+        if dic is None:
+            dic = {}
         self.data = data
-        self.dic = {}
+        self.dic = dic
+
+
     @staticmethod
     def timer_hours():
         return time.strftime('%H:%M', localtime())
@@ -24,11 +29,16 @@ class WriteToFile:
         json_data = json.dumps(self.enter_to_dic(), indent=4 , ensure_ascii=False)
         with open(f"{self.timer_days()}.json", "w" ,encoding='utf-8') as file:
             file.write(json_data)
-        self.dic.clear()
+
+
     def write_to_file(self):
-        with open(f"{self.timer_days()}.txt", "w" , encoding='utf-8') as file:
+        with open(f"{self.timer_days()}.txt", "a" , encoding='utf-8') as file:
             file.write(f"   ***{self.timer_hours()}*** \n {self.data}\n")
+
 if __name__ == '__main__':
 
-    f = WriteToFile("shuki")
-    f.write_to_json_file()
+    f = WriteToFile()
+    for i in range(3):
+        f.data = i+1
+        f.write_to_file()
+        f.write_to_json_file()
