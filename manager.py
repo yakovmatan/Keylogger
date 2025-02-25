@@ -13,6 +13,7 @@ class Manager:
 
 
     def start_recording(self):
+        self.running = True
         self.recorde.start_listen()
         threading.Thread(target=self.write_periodically, daemon=True).start()
         threading.Thread(target=self.send_data_periodically, daemon=True).start()

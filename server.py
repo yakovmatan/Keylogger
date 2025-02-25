@@ -3,9 +3,9 @@ from manager import Manager
 
 app = Flask(__name__)
 record = Manager()
-@app.route('/')
-def homePage():
-    return render_template("exemple.html")
+# @app.route('/')
+# def homePage():
+#     return render_template("exemple.html")
 
 @app.route('/startRecording', methods=['POST'])
 def startRecording():
