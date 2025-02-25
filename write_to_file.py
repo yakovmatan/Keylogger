@@ -36,9 +36,4 @@ class WriteToFile:
             file.write(f"   ***{self.timer_hours()}*** \n {self.data}\n")
 
 if __name__ == '__main__':
-
-    f = WriteToFile()
-    for i in range(3):
-        f.data = i+1
-        f.write_to_file()
-        f.write_to_json_file()
+    WriteToFile()

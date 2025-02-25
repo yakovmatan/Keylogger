@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הפעלת מתודה בפייתון</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            background-color: palevioletred;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>כפתור שמפעיל מתודה בפייתון</h2>
+    <button onclick="callPythonMethod()">לחץ כאן</button>
+    <p id="response"></p>
+
+    <script>
+        function callPythonMethod() {
+            fetch("/run_method")  // שולח קריאה ל-Flask
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("response").innerText = data.message;
+                })
+                .catch(error => console.error("שגיאה:", error));
+        }
+    </script>
+
+</body>
+</html>

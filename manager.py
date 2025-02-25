@@ -23,16 +23,17 @@ class Manager:
         self.running = False
 
 
-    def write_json_file(self):
+    def write_json_and_txt_file(self):
         self.data.data = self.recorde.get_logs()
-        self.data.write_to_json_file()
-        self.data.write_to_file()
+        if self.data.data != "":
+            self.data.write_to_json_file()
+            self.data.write_to_file()
 
 
     def write_periodically(self):
         while self.running:
-            time.sleep(60)
-            self.write_json_file()
+            time.sleep(3)
+            self.write_json_and_txt_file()
 
 
     def send_data_to_server(self):
@@ -54,15 +55,17 @@ class Manager:
 
 
 
-if __name__ == '__main__':
-    n = Manager()
-    n.start_recording()
+# if __name__ == '__main__':
+#     n = Manager()
+#     n.start_recording()
+#     print("חחחח")
+#
+#     try:
+#         while True:
+#             time.sleep(0.1)
+#     except KeyboardInterrupt:
+#         n.stop_recording()
 
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        n.stop_recording()
 
 
 

