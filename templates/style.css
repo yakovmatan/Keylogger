@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+body {
+    background-image:url("https://media.istockphoto.com/id/185124853/photo/someone-looking-at-top-secret-files-with-magnifying-glass.jpg?s=612x612&w=0&k=20&c=EdyvgsScUGd1bDdSound8OQTq2tFtvh6k7tM7WV1VNQ=") ;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+}
+body button {
+    background-color: gray;
+    font-style:italic;
+    font-size: 23px;
+    border-style:2px ridge black;
+    border-width: 7px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
