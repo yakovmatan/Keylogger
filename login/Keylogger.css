@@ -1,0 +1,32 @@
+body{
+    background-image: url("images/1221877.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-color: #22485d;
+    
+}
+h2{
+    color: #fbf5f5;
+    font-size: 45px;
+    margin-bottom: 10px;
+    text-align: center
+    
+}
+#login{
+     text-align: center;
+     
+}
+
+input[type="text"],
+input[type="password"] {
+    margin-bottom: 10px;     
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;         
+}
+
