@@ -52,6 +52,8 @@ def receive_data():
     else:
         return jsonify({"error": "No data received!"}), 400
 data = time.strftime("%d-%m-%y",localtime())
+
+
 @app.route('/getData/<date>', methods=['GET'])
 def get_data(date):
     filename = f"{date}.json"

@@ -18,7 +18,12 @@ class WriteToFile:
     def timer_days():
         return time.strftime('%d-%m-%y', localtime())
 
+    def is_time(self):
+        return self.timer_hours() == "23:59"
+
     def enter_to_dic(self):
+        if self.is_time():
+            self.dic.clear()
         if self.timer_hours() in self.dic:
             self.dic[self.timer_hours()] += self.data
         else:
