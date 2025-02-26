@@ -9,7 +9,7 @@ function login() {
 
     if (username === correctUsername && password === correctPassword) {
      
-        window.location.href = "../templates/exemple.html";
+        window.location.href = "../templates/allData.html";
     } else {
 
         alert("אלעזר לא לגעת.");
