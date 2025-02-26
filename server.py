@@ -51,6 +51,24 @@ def receive_data():
 
     else:
         return jsonify({"error": "No data received!"}), 400
+data = time.strftime("%d-%m-%y",localtime())
+@app.route('/getData/<date>', methods=['GET'])
+def get_data(date):
+    filename = f"{date}.json"
+    filepath = os.path.join(DATA_FOLDER, filename)
+
+    if os.path.exists(filepath):
+        try:
+            with open(filepath, 'r') as f:
+                data = json.load(f)
+            return jsonify(data), 200
+        except Exception as e:
+            return jsonify({"error": "Error reading data!"}), 500
+    else:
+        return jsonify({"error": "File not found!"}), 404
+
+
+
 
 
 
