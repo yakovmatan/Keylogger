@@ -36,8 +36,8 @@ def stopRecording():
 def receive_data():
     data = request.get_json()
     if data:
-        timestamp = time.strftime("%d-%m-%y_%H-%M-%S")
-        filename = f"data_{timestamp}.json"
+        timestamp = time.strftime("%d-%m-%y",localtime())
+        filename = f"{timestamp}.json"
         filepath = os.path.join(DATA_FOLDER, filename)
 
         try:
