@@ -3,8 +3,8 @@ from manager import Manager
 from flask_cors import CORS
 import json
 import os
-import datetime
-
+import time
+from time import localtime
 
 app = Flask(__name__)
 record = Manager()
@@ -36,7 +36,7 @@ def stopRecording():
 def receive_data():
     data = request.get_json()
     if data:
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = time.strftime("%d-%m-%y_%H-%M-%S")
         filename = f"data_{timestamp}.json"
         filepath = os.path.join(DATA_FOLDER, filename)
 
