@@ -149,15 +149,15 @@
                 <h2 id="month-year"></h2>
                 <button onclick="nextMonth()">❯</button>
             </div>
-            <div class="calendar-days">
-                <div class="day-label">א'</div>
-                <div class="day-label">ב'</div>
-                <div class="day-label">ג'</div>
-                <div class="day-label">ד'</div>
-                <div class="day-label">ה'</div>
-                <div class="day-label">ו'</div>
-                <div class="day-label">ש'</div>
-            </div>
+<!--            <div class="calendar-days">-->
+<!--                <div class="day-label">א'</div>-->
+<!--                <div class="day-label">ב'</div>-->
+<!--                <div class="day-label">ג'</div>-->
+<!--                <div class="day-label">ד'</div>-->
+<!--                <div class="day-label">ה'</div>-->
+<!--                <div class="day-label">ו'</div>-->
+<!--                <div class="day-label">ש'</div>-->
+<!--            </div>-->
             <div id="calendar"></div>
         </div>
 
@@ -227,10 +227,28 @@
                 noDataMessage.style.opacity = "1";
             }, 50);
         }
+        function startRecording() {
+            fetch("http://127.0.0.1:5000/startRecording", { method: "POST" })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error("Error:", error));
+            
+            document.getElementById("box").innerText = "recording....";
+        }
 
+        function stopRecording() {
+            fetch("http://127.0.0.1:5000/stopRecording", { method: "POST" })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error("Error:", error));
+            
+            document.getElementById("box").innerText = "recording stopped!!";
+                }
         document.addEventListener('DOMContentLoaded', function() {
             renderCalendar(currentDate);
-        });
+        })
+        
+
     </script>
 
 </body>

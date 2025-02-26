@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@ html, body {
 body {
     background-image:url("https://media.istockphoto.com/id/185124853/photo/someone-looking-at-top-secret-files-with-magnifying-glass.jpg?s=612x612&w=0&k=20&c=EdyvgsScUGd1bDdSound8OQTq2tFtvh6k7tM7WV1VNQ=") ;
     /* background-image: url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExY24wa3JocmRybXF6b3BpaG16ZzZucThjM2lhbjlsZTl4b2RvM3kyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZNFmtw8hXOJu8/giphy.gif"); */
-    background-size: cover; 
+    /* background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 
@@ -32,25 +32,25 @@ body {
 #box {
     position: absolute;
     left: 50%; /* ממרכז אופקית */
-    transform: translateX(-50%); /* מתקן את ההזזה של 50% */
-    bottom: 10%; /* בשליש התחתון (כ-33% מהתחתית) */
-    background-color: #d60505;
-    width: 50%; /* גודל רצוי */
-    height: 65px; /* גובה רצוי */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
+    /* transform: translateX(-50%); /* מתקן את ההזזה של 50% */
+    /* bottom: 10%; בשליש התחתון (כ-33% מהתחתית) */
+    /* background-color: #d60505; */
+    /* width: 50%; גודל רצוי */
+    /* height: 65px; גובה רצוי */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* text-align: center; */
+    /* color: white; */
+/* } */
 
-#shuki {
+/* #shuki {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* מעביר את הקופסה בדיוק למרכז */
 
-    background: rgba(0, 0, 0, 0.5); /* שקיפות שחורה */
+    /* background: rgba(0, 0, 0, 0.5); שקיפות שחורה
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -64,4 +64,92 @@ body {
     align-items: center;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
 /* } */
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+button:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+#box {
+    width: 400px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    margin: 40px auto 0;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #fff;
+}
+
+#calendar-container {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    text-align: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.calendar-day {
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.calendar-day:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.today {
+    background: #FFD700 !important;
+    font-weight: bold;
+    color: black;
 }

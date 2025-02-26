@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לוח שנה</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; max-width: 400px; margin: auto; }
+        .day { padding: 10px; background-color: lightblue; border: none; cursor: pointer; }
+        .day:hover { background-color: deepskyblue; }
+        #display { margin-top: 20px; }
+        table { margin: auto; border-collapse: collapse; width: 50%; }
+        th, td { border: 1px solid black; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>לוח שנה</h1>
+    <div class="calendar" id="calendar"></div>
+    <div id="display"></div>
+
+    <script>
+        function createCalendar() {
+            const calendar = document.getElementById("calendar");
+            const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+            const month = String(new Date().getMonth() + 1).padStart(2, '0');
+            const year = String(new Date().getFullYear()).slice(-2);
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = `${String(day).padStart(2, '0')}-${month}-${year}`;
+                const button = document.createElement("button");
+                button.className = "day";
+                button.textContent = day;
+                button.dataset.date = date;
+                button.onclick = () => fetchData(date);
+                calendar.appendChild(button);
+            }
+        }
+
+        function fetchData(date) {
+            fetch(`http://localhost:5000/getData/${date}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById("display").innerText = data.error;
+                    } else {
+                        document.getElementById("display").innerHTML = formatData(data);
+                    }
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        }
+
+        function formatData(data) {
+            let html = "<table><tr><th>מפתח</th><th>ערך</th></tr>";
+            for (const [key, value] of Object.entries(data)) {
+                html += `<tr><td>${key}</td><td>${value}</td></tr>`;
+            }
+            html += "</table>";
+            return html;
+        }
+
+        createCalendar();
+    </script>
+</body>
+</html>
+
