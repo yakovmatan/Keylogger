@@ -6,6 +6,7 @@ html, body {
 }
 body {
     background-image:url("https://media.istockphoto.com/id/185124853/photo/someone-looking-at-top-secret-files-with-magnifying-glass.jpg?s=612x612&w=0&k=20&c=EdyvgsScUGd1bDdSound8OQTq2tFtvh6k7tM7WV1VNQ=") ;
+    /* background-image: url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExY24wa3JocmRybXF6b3BpaG16ZzZucThjM2lhbjlsZTl4b2RvM3kyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZNFmtw8hXOJu8/giphy.gif"); */
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -26,4 +27,41 @@ body {
     height: 14vh;
     margin: 0;
     background-color: #f0f0f0;
+}
+
+#box {
+    position: absolute;
+    left: 50%; /* ממרכז אופקית */
+    transform: translateX(-50%); /* מתקן את ההזזה של 50% */
+    bottom: 10%; /* בשליש התחתון (כ-33% מהתחתית) */
+    background-color: #d60505;
+    width: 50%; /* גודל רצוי */
+    height: 65px; /* גובה רצוי */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+#shuki {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* מעביר את הקופסה בדיוק למרכז */
+
+    background: rgba(0, 0, 0, 0.5); /* שקיפות שחורה */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 50%;
+    max-width: 500px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+/* } */
 }
