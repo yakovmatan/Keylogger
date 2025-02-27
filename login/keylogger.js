@@ -12,7 +12,7 @@ function login() {
         window.location.href = "../templates/exemple.html";
     } else {
 
-        alert("אלעזר לא לגעת.");
+        alert("שם משתמש או סיסמא שגויים.");
     }
 }
 // הוספנו את פונקציית ה-event listener כדי לטפל בלחיצה על Enter
