@@ -67,7 +67,7 @@ def get_data(date):
         except Exception as e:
             return jsonify({"error": "Error reading data!"}), 500
     else:
-        return jsonify({"error": "File not found!"}), 404
+        return jsonify({"": ""}), 404
 
 
 
